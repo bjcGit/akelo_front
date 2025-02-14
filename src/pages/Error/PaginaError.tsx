@@ -1,7 +1,7 @@
 import { Button, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logout } from "../../store/slices/authSlice";
+
 
 export const PaginaError = () => {
   const navigate = useNavigate(); // Hook para redirección
@@ -9,7 +9,7 @@ export const PaginaError = () => {
 
   const handleLogout = () => {
     // Llama a la acción logout de Redux
-    dispatch(logout());
+  
 
     // Redirige al usuario al login
     navigate("/Login");

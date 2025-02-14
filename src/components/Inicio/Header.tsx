@@ -4,21 +4,20 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../../store/slices/authSlice"; // Importamos la acción para cerrar sesión
+import { useAuthStore } from "../../store/actions/useAuthStore";
 
 function Header() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { isAuthenticated, user } = useSelector((state: any) => state.auth); // Obtenemos el estado de autenticación
+
+  const { user, isAuthenticated, logout } = useAuthStore();
 
   const handleLogin = () => {
     navigate("/Login");
   };
 
   const handleLogout = () => {
-    dispatch(logout());
-    navigate("/"); // Redirige al inicio después de cerrar sesión
+    logout();
+    navigate("/"); 
   };
 
   return (

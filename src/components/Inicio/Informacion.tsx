@@ -37,9 +37,9 @@ interface InformacionCardProps {
   data: any; // Ajustar el tipo según la API
 }
 
-export default function InformacionCard({ data }: InformacionCardProps) {
+export default function InformacionCard() {
   const [selectedItemIndex, setSelectedItemIndex] = React.useState(0);
-  console.log(data)
+
 
   const handleItemClick = (index: number) => {
     setSelectedItemIndex(index);

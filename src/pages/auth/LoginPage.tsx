@@ -4,8 +4,8 @@ import { Box, Button, Card, FormLabel, FormControl, TextField, Typography } from
 import { useNavigate } from "react-router-dom";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
 
-import RegistroUsuarioDialog from "./RegistroUsuarioDialog";
 import { useAuthStore } from "../../store/actions/useAuthStore";
+import RegistroUsuarioDialog from "../Login/RegistroUsuarioDialog";
 
 export function EmcaliIcon() {
   return (
@@ -28,7 +28,7 @@ const validationSchema = Yup.object({
   password: Yup.string().min(6, "Mínimo 6 caracteres").required("La contraseña es obligatoria"),
 });
 
-export default function SignInCard() {
+export default function LoginPage() {
   const navigate = useNavigate();
   const { login } = useAuthStore();
 
@@ -36,7 +36,7 @@ export default function SignInCard() {
     try {
       await login(values.correo, values.password);
       Notify.success("Inicio de sesión exitoso");
-      navigate("/dashboard");
+      navigate("/");
     } catch (error: any) {
       Notify.failure(error.message);
     } finally {

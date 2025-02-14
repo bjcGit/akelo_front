@@ -1,11 +1,13 @@
+
+import { Navigation } from "../routes/Navigation";
 import Routers from "../routes/Routers";
 
-const Layout = () => {
+export const Layout = () => {
+
   return (
     <main>
-      <Routers />
+      <Navigation />
     </main>
   );
 };
 
-export default Layout;

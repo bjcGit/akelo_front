@@ -177,7 +177,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({ open }) => {
 
   return (
     <List>
-      {options.map((option, index) => (
+      {allOptions.map((option, index) => (
         <ListItem key={index} disablePadding sx={{ display: "block" }}>
           <ListItemButton
             onClick={() => handleNavigation(option.route)}

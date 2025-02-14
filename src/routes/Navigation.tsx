@@ -16,9 +16,8 @@ import ConfirmarDescarga from "../pages/Operario/ConfirmarDescarga";
 import HistorialDescarga from "../pages/Operario/HistorialDescargas";
 import AdministrarEmpresa from "../pages/Administrador/AdministrarEmpresa";
 import AdministrarUsuario from "../pages/Administrador/AdministrarUsuario";
-import RegistroUsuarioDialog from "../pages/Login/RegistroUsuarioDialog";
 import { useAuthStore } from "../store/actions/useAuthStore";
-import DashboardLayout from "../pages/Dashboard/DashboardLayout";
+import { DashboardLayout } from "../pages/Dashboard/DashboardLayout";
 
 
 interface RoleRoute {
@@ -28,7 +27,7 @@ interface RoleRoute {
 
 const roleRoutes: { [key: string]: RoleRoute[] } = {
   ADMIN: [
-    { path: "/AdministrarEmpresa", component: <AdministrarEmpresa /> },
+    { path: "/dashboard", component: <AdministrarEmpresa /> },
     { path: "/AdministrarUsuario", component: <AdministrarUsuario /> },
     { path: "/ConfirmarDescarga", component: <ConfirmarDescarga /> },
     { path: "/HistorialDescarga", component: <HistorialDescarga /> },
@@ -41,18 +40,17 @@ const roleRoutes: { [key: string]: RoleRoute[] } = {
     { path: "/HistorialS", component: <HistorialS /> },
     { path: "/SolicitarC", component: <SolicitarC /> },
     { path: "/HistorialCer", component: <HistorialCer /> },
-  ]
+  ],
 };
 
-const Routers = () => {
+export const Navigation = () => {
   const { user } = useAuthStore();
   return (
     <Routes>
     {/* Rutas públicas */}
     <Route path="/" element={<PaginaInicio />} />
-    <Route path="/Error" element={<PaginaError />} />
-    <Route path="/Login" element={<SignInSide />} />
-    <Route path="/Registro" element={<RegistroUsuarioDialog />} />
+    <Route path="/login" element={<SignInSide />} />
+    <Route path="/error" element={<PaginaError />} />
     {user &&
       roleRoutes[user.rol]?.map(({ path, component }) => (
         <Route
@@ -68,5 +66,3 @@ const Routers = () => {
   </Routes>
   );
 };
-
-export default Routers;

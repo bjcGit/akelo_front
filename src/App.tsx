@@ -1,5 +1,5 @@
-import Layout from "./Layout/Layout";
+import { Navigation } from "./routes/Navigation";
 
 export default function App() {
-  return <Layout />;
+  return <Navigation />;
 }

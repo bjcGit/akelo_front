@@ -4,14 +4,15 @@ import MenuItem from "@mui/material/MenuItem";
 import IconButton from "@mui/material/IconButton";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "../../store/slices/authSlice";
+import { useAuthStore } from "../../store/actions/useAuthStore";
+
 
 export const ButtonDes = () => {
+  const { logout } = useAuthStore();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const dispatch = useDispatch(); // Hook para despachar acciones de Redux
+
   const open = Boolean(anchorEl);
-  const navigate = useNavigate(); // Hook para redirección
+  const navigate = useNavigate();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -21,14 +22,13 @@ export const ButtonDes = () => {
     setAnchorEl(null);
   };
   const handleLogout = () => {
-    // Llama a la acción logout de Redux
-    dispatch(logout());
+    logout()
 
     // Cierra el menú
     handleClose();
 
     // Redirige al usuario al login
-    navigate("/Login");
+    navigate("/");
   };
 
   return (
